@@ -31,6 +31,16 @@ export default function ItemList() {
     return valuesAsObj;
   };
 
+  const removeStoreItems = async () => {
+    let keys = [];
+    try {
+      keys = await AsyncStorage.getAllKeys();
+    } catch (e) {
+      console.log(e);
+    }
+    await AsyncStorage.multiRemove(keys);
+  };
+
   //Create item element for each item in the items array
   const itemElements = items.map(item => {
     return <Item key={item.id} title={item.title} price={item.price} />;

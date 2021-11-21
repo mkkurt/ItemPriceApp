@@ -5,7 +5,7 @@ const Item = props => {
   return (
     <View style={styles.main}>
       <Text style={styles.title}>{props.title}</Text>
-      <Text style={styles.price}>{props.price}</Text>
+      <Text style={styles.price}>{props.price} TL</Text>
     </View>
   );
 };

@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import nextId from 'react-id-generator';
@@ -15,17 +16,22 @@ const AddItem = () => {
 
   const handleAddItem = async () => {
     //TODO Check price is a number and title is not empty
-    let newId = nextId();
-    let newItem = {
-      id: newId,
-      title: addTitle,
-      price: addPrice,
-    };
-    let jsonItem = JSON.stringify(newItem);
-    try {
-      await AsyncStorage.setItem(newId, jsonItem);
-    } catch (e) {
-      console.log(e);
+    if (addTitle === '' || addPrice === '' || isNaN(addPrice)) {
+      alert('Please fill all fields correctly');
+    } else {
+      let newId = nextId();
+      let newItem = {
+        id: newId,
+        title: addTitle,
+        price: addPrice,
+      };
+      let jsonItem = JSON.stringify(newItem);
+      try {
+        await AsyncStorage.setItem(newId, jsonItem);
+      } catch (e) {
+        console.log(e);
+      }
+      Keyboard.dismiss();
     }
   };
 
