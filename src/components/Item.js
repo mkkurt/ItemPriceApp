@@ -1,14 +1,19 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useContext} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
-const Item = props => {
+export default function Item(props) {
   return (
-    <View style={styles.main}>
+    <TouchableOpacity
+      style={styles.main}
+      onPress={() => props.deleteItemById(props.id)}>
       <Text style={styles.title}>{props.title}</Text>
-      <Text style={styles.price}>{props.price} TL</Text>
-    </View>
+      <View style={styles.leftSide}>
+        <Text style={styles.price}>{props.price} TL</Text>
+        <Text style={styles.date}>{props.date}</Text>
+      </View>
+    </TouchableOpacity>
   );
-};
+}
 
 const styles = StyleSheet.create({
   main: {
@@ -18,16 +23,23 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 7,
     justifyContent: 'space-between',
-    alignItems: 'baseline',
-    backgroundColor: 'white',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#EDEEF3',
+    backgroundColor: '#CFD6DC',
   },
   title: {
-    fontSize: 20,
+    fontSize: 12,
+  },
+  leftSide: {
+    alignItems: 'flex-end',
   },
   price: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: '700',
   },
+  date: {
+    fontSize: 10,
+    fontWeight: '300',
+  },
 });
-
-export default Item;
