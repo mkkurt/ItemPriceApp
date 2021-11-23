@@ -7,30 +7,53 @@ import {
   TouchableOpacity,
   Keyboard,
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import nextId from 'react-id-generator';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import getTime from '../utils/getTime.js';
+import sortList from '../utils/sortList';
 
-const AddItem = () => {
+const AddItem = props => {
   const [addTitle, setAddTitle] = useState('');
   const [addPrice, setAddPrice] = useState('');
 
   const handleAddItem = async () => {
-    //TODO Check price is a number and title is not empty
     if (addTitle === '' || addPrice === '' || isNaN(addPrice)) {
       alert('Please fill all fields correctly');
     } else {
       let newId = nextId();
+      const time = getTime();
       let newItem = {
         id: newId,
         title: addTitle,
-        price: addPrice,
+        price: parseInt(addPrice, 10),
+        date: time,
       };
       let jsonItem = JSON.stringify(newItem);
-      try {
-        await AsyncStorage.setItem(newId, jsonItem);
-      } catch (e) {
-        console.log(e);
-      }
+      await AsyncStorage.setItem(newId, jsonItem);
+      // props.setItems([...props.items, newItem]);
+      console.log(props.selected);
+      //Sort items
+      const doSortList = () => {
+        switch (props.selected) {
+          case 1:
+            props.setItems(prevState =>
+              sortList.incPrice([...prevState, newItem]),
+            );
+            break;
+          case 2:
+            props.setItems(prevState =>
+              sortList.decPrice([...prevState, newItem]),
+            );
+            break;
+          case 3:
+            //Implement date sorting
+            props.setItems(prevState =>
+              sortList.byTime([...prevState, newItem]),
+            );
+            break;
+        }
+      };
+      doSortList();
       Keyboard.dismiss();
     }
   };
@@ -64,28 +87,34 @@ const styles = StyleSheet.create({
   main: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: 'pink',
     padding: 10,
+    borderTopColor: '#EDEEF3',
+    borderTopWidth: 1,
   },
   field: {
-    backgroundColor: 'red',
+    // backgroundColor: '#CFD6DC',
+    marginBottom: 10,
   },
   fieldTitle: {
-    backgroundColor: 'blue',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 15,
+    marginBottom: 3,
   },
   fieldInput: {
-    backgroundColor: 'green',
+    backgroundColor: '#EDEEF3',
+    height: 30,
+    padding: 5,
   },
   add: {
     alignItems: 'center',
-    backgroundColor: 'yellow',
     borderRadius: 7,
+    backgroundColor: '#485964',
+    padding: 5,
   },
   addText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'white',
   },
 });
 
