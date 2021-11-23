@@ -7,24 +7,50 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const UpperMenu = () => {
-  const [selected, setSelected] = useState(1);
+const UpperMenu = props => {
   return (
     <SafeAreaView style={styles.main}>
       <TouchableOpacity
-        style={selected === 1 ? styles.selectedButton : styles.buttonWrapper}
-        onPress={() => setSelected(1)}>
-        <Text style={styles.buttonText}>Artan Fiyat</Text>
+        style={
+          props.selected === 1
+            ? styles.selectedButtonWrapper
+            : styles.buttonWrapper
+        }
+        onPress={() => props.setSelected(1)}>
+        <Text
+          style={
+            props.selected === 1 ? styles.selectedButtonText : styles.buttonText
+          }>
+          Artan Fiyat
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={selected === 2 ? styles.selectedButton : styles.buttonWrapper}
-        onPress={() => setSelected(2)}>
-        <Text style={styles.buttonText}>Azalan Fiyat</Text>
+        style={
+          props.selected === 2
+            ? styles.selectedButtonWrapper
+            : styles.buttonWrapper
+        }
+        onPress={() => props.setSelected(2)}>
+        <Text
+          style={
+            props.selected === 2 ? styles.selectedButtonText : styles.buttonText
+          }>
+          Azalan Fiyat
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={selected === 3 ? styles.selectedButton : styles.buttonWrapper}
-        onPress={() => setSelected(3)}>
-        <Text style={styles.buttonText}>Tarih</Text>
+        style={
+          props.selected === 3
+            ? styles.selectedButtonWrapper
+            : styles.buttonWrapper
+        }
+        onPress={() => props.setSelected(3)}>
+        <Text
+          style={
+            props.selected === 3 ? styles.selectedButtonText : styles.buttonText
+          }>
+          Tarih
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -33,34 +59,39 @@ const UpperMenu = () => {
 const styles = StyleSheet.create({
   main: {
     display: 'flex',
+    width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'pink',
   },
   buttonWrapper: {
-    display: 'flex',
-    flexDirection: 'row',
-    margin: 5,
-    paddingVertical: 3,
-    paddingHorizontal: 20,
+    padding: 4,
+    margin: 10,
+    width: '26%',
     borderRadius: 7,
-    justifyContent: 'space-between',
-    alignItems: 'baseline',
-    backgroundColor: 'white',
+    alignItems: 'center',
+    backgroundColor: '#CFD6DC',
+    borderColor: '#919699',
+    borderWidth: 1,
   },
   buttonText: {
-    fontSize: 20,
+    fontSize: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#919699',
   },
-  selectedButton: {
-    display: 'flex',
-    flexDirection: 'row',
-    margin: 5,
-    paddingVertical: 3,
-    paddingHorizontal: 20,
+  selectedButtonWrapper: {
+    padding: 4,
+    margin: 10,
+    width: '26%',
     borderRadius: 7,
-    justifyContent: 'space-between',
-    alignItems: 'baseline',
+    alignItems: 'center',
     backgroundColor: 'gray',
+  },
+  selectedButtonText: {
+    fontSize: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
   },
 });
 
