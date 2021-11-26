@@ -115,8 +115,6 @@ const App = () => {
     }
     await AsyncStorage.multiRemove(keys);
   };
-
-  //TODO SwipablePanel is not working on Emulator but works on expo snack
   return (
     <View style={{flex: 1}}>
       <View
