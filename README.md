@@ -10,4 +10,4 @@
 - [RN-Swipeable Panel](https://github.com/enesozturk/rn-swipeable-panel)
 - [React ID Generator](https://github.com/Tomekmularczyk/react-id-generator)
 
-<img src="/appPreview.gif" width="25%"/>
+<img src="/appPreview.gif" width="35%"/>
