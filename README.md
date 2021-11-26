@@ -1,2 +1,13 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6412804&assignment_repo_type=AssignmentRepo)
-![](appPreview.gif)
+# Item List App
+
+## Features
+- Add and remove items with their prices!
+- Sort items with 3 different options!
+
+## Tech
+
+- [React Native](https://github.com/facebook/react-native)
+- [RN-Swipeable Panel](https://github.com/enesozturk/rn-swipeable-panel)
+- [React ID Generator](https://github.com/Tomekmularczyk/react-id-generator)
+
+<img src="/appPreview.gif" width="25%"/>
