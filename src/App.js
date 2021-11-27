@@ -164,9 +164,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: 'crimson',
-    width: '70%',
-    borderRadius: 15,
-    margin: 20,
+    width: '100%',
     alignItems: 'center',
   },
   emptyListView: {
