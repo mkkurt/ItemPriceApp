@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: '#EDEEF3',
-    backgroundColor: '#CFD6DC',
   },
   title: {
-    fontSize: 12,
+    fontSize: 15,
+    fontWeight: '500',
   },
   leftSide: {
     alignItems: 'flex-end',
